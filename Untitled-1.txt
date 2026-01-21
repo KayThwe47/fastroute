@@ -1,0 +1,224 @@
+🚀 FastRoute - Autonomous Food Delivery Bot System
+
+
+
+
+
+
+
+
+Overview
+
+FastRoute is a modern, eco-friendly autonomous food delivery system designed to:
+
+Select delivery points on a map
+
+Automatically calculate the most efficient delivery route (A* Algorithm)
+
+Assign orders to available bots while respecting capacity
+
+Provide real-time updates on delivery status
+
+Perfect for demonstrating full-stack skills, route optimization, and real-time streaming.
+
+Features
+Feature	Description
+Interactive Map	9×9 grid with restaurants, bots, and delivery points
+5 Delivery Bots	Each bot can carry up to 3 orders
+4 Restaurant Types	Ramen, Curry, Pizza, Sushi
+Auto Route Calculation	A* pathfinding algorithm
+Real-time Updates	Server-Sent Events (SSE) streaming
+Rate Limiting	3 orders per restaurant per 30 seconds
+Auto Simulation	Watch bots deliver in real-time
+Tech Stack
+Frontend
+
+Next.js 14 - React framework
+
+TypeScript - Type safety
+
+Tailwind CSS - Styling
+
+Axios - API calls
+
+Backend
+
+FastAPI - Python web framework
+
+SQLAlchemy - ORM
+
+PostgreSQL - Database
+
+SSE - Real-time streaming
+
+Infrastructure
+
+Docker - Containerization
+
+Docker Compose - Multi-container orchestration
+
+Project Structure
+fastroute/
+├── backend/
+│   ├── app/
+│   │   ├── routers/
+│   │   │   ├── orders.py
+│   │   │   ├── bots.py
+│   │   │   ├── restaurants.py
+│   │   │   ├── map.py
+│   │   │   ├── streaming.py
+│   │   │   └── simulation.py
+│   │   ├── database.py
+│   │   ├── models.py
+│   │   ├── seed_data.py
+│   │   └── main.py
+│   ├── Dockerfile
+│   └── requirements.txt
+├── frontend/
+│   ├── app/
+│   │   ├── page.tsx
+│   │   ├── layout.tsx
+│   │   └── globals.css
+│   ├── components/
+│   │   ├── MapGrid.tsx
+│   │   ├── OrderForm.tsx
+│   │   ├── OrderList.tsx
+│   │   └── BotStatus.tsx
+│   ├── lib/
+│   │   └── api.ts
+│   ├── Dockerfile
+│   └── package.json
+└── docker-compose.yml
+
+Quick Start
+Prerequisites
+
+Docker & Docker Compose installed
+
+Git
+
+Installation
+
+Clone the repository
+
+git clone https://github.com/<YOUR_USERNAME>/fastroute.git
+cd fastroute
+
+
+Start the application
+
+docker compose up --build
+
+
+Access the application
+
+Frontend: http://localhost:3000
+
+API Docs: http://localhost:8000/docs
+
+Backend: http://localhost:8000
+
+How to Use
+1. Create an Order
+
+Click on the map to select a delivery location
+
+Enter customer name
+
+Select a restaurant
+
+Click "Create Order"
+
+2. Start Delivery
+
+Find your order in the Orders list
+
+Click "🚀 Start Delivery"
+
+Watch the bot move on the map
+
+3. Track Progress
+
+Route shows on map when order is selected
+
+Progress bar shows delivery status
+
+Bot Fleet shows bot positions and capacity
+
+Map Legend
+Symbol	Meaning
+🍜🍛🍕🍣	Restaurants
+🤖	Delivery Bot
+🏠	Delivery Point
+🔴	Blocked Path
+🟣	Delivery Route
+Order Status Flow
+📝 Pending → 🤖 Assigned → 📦 Picking Up → ✅ Picked Up → 🚚 Delivering → 🎉 Delivered
+
+API Endpoints
+Orders
+Method	Endpoint	Description
+GET	/api/orders	Get all orders
+POST	/api/orders	Create order
+PUT	/api/orders/{id}/status/{status}	Update status
+DELETE	/api/orders/{id}	Delete order
+POST	/api/orders/{id}/cancel	Cancel order
+Bots
+Method	Endpoint	Description
+GET	/api/bots	Get all bots
+GET	/api/bots/available	Get available bots
+Map
+Method	Endpoint	Description
+GET	/api/map/data	Get map data
+GET	/api/map/route	Calculate route (A*)
+GET	/api/map/stats	Get statistics
+Simulation
+Method	Endpoint	Description
+POST	/api/simulation/start/{id}	Start auto delivery
+POST	/api/simulation/stop/{id}	Stop simulation
+Database Schema
+Tables
+
+nodes(81 rows) - Map grid nodes
+
+blocked_paths - Blocked connections
+
+bots (5 rows) - Delivery bots
+
+restaurants (6 rows) - Food restaurants
+
+orders - Customer orders
+
+Key Relationships
+Orders → Restaurants (pickup location)
+Orders → Nodes (delivery location)
+Orders → Bots (assigned bot)
+
+Business Rules
+
+🤖 Total Bots: 5
+
+📦 Max orders per bot: 3
+
+⏱️ Restaurant rate limit: 3 orders per 30 seconds
+
+📍 Address format: L{row}{col} (e.g., L00, L74)
+
+🗺️ Grid size: 9×9
+
+Testing
+
+API Testing: http://localhost:8000/docs
+
+Database Access: Host: localhost, Port: 5432, Database: fastroute_db, Username: fastroute, Password: fastroute123
+
+Author
+
+Naw Kay Thwe Khaing
+Portfolio Project | Open Source
+
+License
+
+This project is open source and available for personal portfolio, learning, and demonstration purposes.
+
+© 2026 — All Rights Reserved

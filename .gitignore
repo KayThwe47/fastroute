@@ -14,3 +14,17 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+
+# dependencies
+node_modules/
+frontend/node_modules/
+
+# build
+dist/
+.next/
+
+# env
+.env
+.env.local
+
