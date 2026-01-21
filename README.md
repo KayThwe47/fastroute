@@ -90,8 +90,8 @@ fastroute/
 
 1. Clone the repository
 ```bash
-git clone https://
-cd naw_kay_thwe_khaing
+git clone https://github.com/KayThwe47/fastroute.git
+cd fastroute
 ```
 
 2. Start the application
