@@ -1,0 +1,16 @@
+# Node
+node_modules/
+.next/
+
+# Python
+__pycache__/
+*.pyc
+.env
+.venv
+
+# Docker
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
